@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MGL Catering & Services — Bengaluru</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --f:#1C2B1C; --f2:#243224; --f3:#2E3F2E;
+  --g:#D4AF37; --g2:#C49B2A;
+  --iv:#F5F0E8; --iv2:#EDE5D5; --iv3:#E0D5C0;
+  --st:#7A6E58; --ink:#111A11;
+  --sr:'Libre Baskerville',Georgia,serif;
+  --sn:'Jost','Helvetica Neue',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sn);background:var(--iv);color:var(--ink);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:var(--g2);border-radius:2px}
+::selection{background:rgba(212,175,55,0.22)}
+
+/* NAV */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  height:70px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 60px;background:transparent;
+  transition:background .4s,backdrop-filter .4s,border .4s;
+}
+header.scrolled{
+  background:rgba(17,26,17,0.96);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(212,175,55,0.12);
+}
+.nav-logo{text-decoration:none;display:flex;align-items:center;gap:11px}
+.nav-logo-box{
+  width:34px;height:34px;border:1px solid var(--g);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--sr);font-size:14px;color:var(--g);font-weight:700;flex-shrink:0;
+}
+.nav-logo-txt{font-family:var(--sr);font-size:17px;font-weight:700;color:var(--iv)}
+.nav-logo-txt span{color:var(--g)}
+nav{display:flex;align-items:center;gap:34px}
+nav a{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,232,0.48);text-decoration:none;transition:color .2s}
+nav a:hover{color:var(--g)}
+.nav-cta{background:var(--g)!important;color:#111!important;padding:10px 24px;font-weight:600!important;transition:all .2s!important}
+.nav-cta:hover{background:var(--g2)!important;color:#fff!important}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 70% 40%, rgba(212,175,55,0.1) 0%, transparent 55%),
+    radial-gradient(ellipse at 15% 85%, rgba(46,63,46,0.6) 0%, transparent 45%),
+    linear-gradient(135deg,#0D1A0D 0%,#1C2B1C 45%,#243224 100%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  max-width:1200px;margin:0 auto;
+  padding:140px 60px 120px;width:100%;
+}
+.hero-inner{max-width:600px;animation:fadeUp 1s .15s both}
+.hero-tag{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.hero-tag-line{width:36px;height:1px;background:var(--g)}
+.hero-tag-txt{font-size:11px;letter-spacing:3.5px;text-transform:uppercase;color:var(--g);font-weight:400}
+.hero-h1{
+  font-family:var(--sr);
+  font-size:clamp(48px,6vw,80px);
+  font-weight:400;line-height:1.0;color:var(--iv);margin-bottom:28px;
+}
+.hero-h1 em{font-style:italic;color:#ECD98A;display:block}
+.hero-rule{width:48px;height:1px;background:var(--g);margin-bottom:24px}
+.hero-p{font-size:16px;font-weight:300;color:rgba(245,240,232,.5);line-height:1.9;max-width:420px;margin-bottom:44px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-gold{display:inline-block;background:var(--g);color:#111;padding:14px 36px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .2s}
+.btn-gold:hover{background:var(--g2);color:#fff}
+.btn-outline{display:inline-block;border:1px solid rgba(245,240,232,.28);color:rgba(245,240,232,.72);padding:14px 36px;font-size:12px;font-weight:400;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .2s}
+.btn-outline:hover{border-color:var(--g);color:var(--g)}
+.hero-stats{display:flex;gap:48px;margin-top:56px;padding-top:40px;border-top:1px solid rgba(212,175,55,.14)}
+.hs-n{font-family:var(--sr);font-size:36px;font-weight:700;color:var(--g);line-height:1;margin-bottom:5px}
+.hs-l{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,232,.28)}
+
+/* MARQUEE */
+.marquee{background:var(--g);padding:13px 0;overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex;animation:ticker 30s linear infinite}
+.marquee-item{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(17,26,17,.75);font-weight:600;padding:0 44px;border-right:1px solid rgba(17,26,17,.18)}
+
+/* SIGNATURE DISHES STRIP */
+.sig-strip{
+  background:var(--f);
+  border-top:1px solid rgba(212,175,55,0.1);
+  border-bottom:1px solid rgba(212,175,55,0.1);
+  display:grid;grid-template-columns:repeat(5,1fr);
+}
+.sig-item{
+  padding:40px 28px;
+  border-right:1px solid rgba(212,175,55,0.08);
+  transition:background .3s;cursor:default;
+}
+.sig-item:last-child{border-right:none}
+.sig-item:hover{background:rgba(212,175,55,0.05)}
+.sig-num{font-size:10px;letter-spacing:2px;color:rgba(212,175,55,0.4);font-family:var(--sr);font-style:italic;margin-bottom:14px}
+.sig-name{font-family:var(--sr);font-size:17px;font-weight:400;color:var(--iv);line-height:1.2;margin-bottom:10px}
+.sig-desc{font-size:12px;font-weight:300;color:rgba(245,240,232,0.36);line-height:1.65}
+.sig-bar{width:20px;height:1px;background:var(--g);opacity:0.45;margin-top:16px}
+
+/* SECTION COMMONS */
+section{padding:120px 60px}
+.s-inner{max-width:1200px;margin:0 auto}
+.s-label{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.s-label-line{width:28px;height:1px;flex-shrink:0}
+.s-label-light .s-label-line{background:var(--g)}
+.s-label-dark .s-label-line{background:var(--g2)}
+.s-label-txt{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;font-weight:400}
+.s-label-light .s-label-txt{color:var(--g)}
+.s-label-dark .s-label-txt{color:var(--g2)}
+.s-h2{font-family:var(--sr);font-size:clamp(34px,4vw,52px);font-weight:400;line-height:1.15}
+.s-h2 em{font-style:italic}
+.light-h{color:var(--iv)}.light-h em{color:#ECD98A}
+.dark-h{color:var(--ink)}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(32px);transition:opacity .85s ease,transform .85s ease}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* STORY */
+.story-sec{background:var(--f)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}
+.story-p{font-size:15px;font-weight:300;color:rgba(245,240,232,.48);line-height:1.95;margin-bottom:20px}
+.story-stats{display:flex;gap:48px;padding-top:40px;border-top:1px solid rgba(212,175,55,.12);margin-top:48px}
+.story-stat-n{font-family:var(--sr);font-size:30px;font-weight:700;color:var(--g);line-height:1;margin-bottom:6px}
+.story-stat-l{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,232,.28)}
+/* Story right — decorative thali SVG panel */
+.story-visual{
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(160deg,var(--f2),var(--f3));
+  border-radius:2px;height:480px;position:relative;overflow:hidden;
+}
+.story-visual svg{width:85%;max-width:360px}
+.story-visual::before{
+  content:'';position:absolute;top:10%;right:10%;
+  width:160px;height:160px;border-radius:50%;
+  border:1px solid rgba(212,175,55,0.08);
+}
+.story-visual::after{
+  content:'';position:absolute;bottom:15%;left:8%;
+  width:80px;height:80px;border-radius:50%;
+  border:1px solid rgba(212,175,55,0.06);
+}
+.fssai-badge{position:absolute;bottom:-18px;left:-18px;background:var(--g);padding:20px 26px;box-shadow:0 16px 48px rgba(0,0,0,.35)}
+.fssai-badge-n{font-family:var(--sr);font-size:24px;font-weight:700;color:var(--ink);line-height:1}
+.fssai-badge-l{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(17,26,17,.55);margin-top:4px}
+
+/* MENU */
+.menu-sec{background:var(--iv)}
+.menu-header{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:56px}
+.menu-sub{font-size:15px;font-weight:300;color:var(--st);line-height:1.9;align-self:end}
+.menu-tabs{display:flex}
+.m-tab{padding:13px 28px;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:400;color:var(--st);background:var(--iv2);border:none;border-bottom:2px solid var(--iv3);cursor:pointer;transition:all .2s;font-family:var(--sn)}
+.m-tab.on{background:var(--f);color:var(--g);font-weight:600;border-bottom:2px solid var(--g)}
+.m-tab-filler{flex:1;border-bottom:2px solid var(--iv3)}
+.menu-panel{display:none}
+.menu-panel.on{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--iv3)}
+.m-item{background:#fff;padding:22px 18px;transition:background .22s;cursor:default}
+.m-item:hover{background:var(--iv2)}
+.m-dot{width:4px;height:4px;border-radius:50%;background:var(--g);margin-bottom:12px}
+.m-name{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:4px}
+.m-desc{font-size:11px;color:var(--st);font-weight:300}
+
+/* WHY */
+.why-sec{background:var(--iv2)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.why-card{background:#fff;padding:44px 36px;border-top:2px solid transparent;transition:all .3s;cursor:default}
+.why-card:hover{background:rgba(212,175,55,.05);border-color:var(--g)}
+.wc-num{font-family:var(--sr);font-size:12px;color:var(--g);letter-spacing:2px;margin-bottom:18px;font-style:italic}
+.wc-title{font-size:16px;font-weight:600;color:var(--ink);margin-bottom:12px}
+.wc-desc{font-size:13px;font-weight:300;color:var(--st);line-height:1.85}
+
+/* SERVICES */
+.svc-sec{background:var(--f2)}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.svc-card{background:var(--f3);padding:52px 48px;border-left:2px solid transparent;transition:all .3s;cursor:default;display:flex;flex-direction:column}
+.svc-card:hover{background:rgba(212,175,55,.04);border-color:var(--g)}
+.svc-num{font-size:11px;letter-spacing:2px;color:var(--g);margin-bottom:18px}
+.svc-title{font-family:var(--sr);font-size:27px;font-weight:400;color:var(--iv);margin-bottom:14px;line-height:1.2}
+.svc-desc{font-size:14px;font-weight:300;color:rgba(245,240,232,.42);line-height:1.85;flex:1;margin-bottom:28px}
+.svc-tag{display:inline-block;align-self:flex-start;border:1px solid rgba(212,175,55,.3);color:var(--g);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:6px 14px}
+
+/* PRICING */
+.price-sec{background:var(--iv)}
+.price-inner{max-width:960px;margin:0 auto}
+.price-note{display:flex;gap:14px;align-items:flex-start;background:rgba(212,175,55,.07);border-left:3px solid var(--g);padding:18px 22px;margin:26px 0 40px;font-size:14px;font-weight:300;color:#3A3020;line-height:1.8}
+.price-note strong{font-weight:600;color:var(--ink)}
+.price-note a{color:var(--g2);font-weight:500;text-decoration:none}
+.price-tabs{display:flex}
+.p-tab{padding:13px 28px;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:400;color:var(--st);background:var(--iv2);border:none;border-bottom:2px solid var(--iv3);cursor:pointer;transition:all .2s;font-family:var(--sn)}
+.p-tab.on{background:var(--f);color:var(--g);font-weight:600;border-bottom:2px solid var(--g)}
+.p-tab-filler{flex:1;border-bottom:2px solid var(--iv3)}
+.p-panel{display:none}.p-panel.on{display:block}
+.p-table{width:100%;border-collapse:collapse;border:1px solid var(--iv3);border-top:none}
+.p-table thead tr{background:var(--f)}
+.p-table th{padding:16px 24px;text-align:left;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--g);font-weight:400}
+.p-table td{padding:17px 24px;font-size:14px;font-weight:300;border-bottom:1px solid var(--iv3)}
+.p-table tbody tr:nth-child(odd){background:#fff}
+.p-table tbody tr:nth-child(even){background:var(--iv2)}
+.p-table tbody tr:hover{background:rgba(212,175,55,.06)}
+.p-table tbody tr:last-child td{border-bottom:none}
+.ph{color:var(--g2);font-weight:600}.pt{font-weight:500;color:var(--ink)}
+.p-foot{padding:15px 24px;background:rgba(212,175,55,.06);border:1px solid var(--iv3);border-top:none;font-size:13px;font-weight:300;color:#4A3A1A;line-height:1.75}
+.p-foot strong{font-weight:600;color:var(--ink)}
+
+/* CTA */
+.cta-sec{background:var(--f);padding:110px 60px;position:relative;overflow:hidden}
+.cta-grid-bg{position:absolute;inset:0;opacity:.04;background-image:repeating-linear-gradient(0deg,transparent,transparent 48px,rgba(212,175,55,1) 48px,rgba(212,175,55,1) 49px),repeating-linear-gradient(90deg,transparent,transparent 48px,rgba(212,175,55,1) 48px,rgba(212,175,55,1) 49px);pointer-events:none}
+.cta-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:60px}
+.cta-right{display:flex;flex-direction:column;align-items:flex-end;gap:16px;flex-shrink:0}
+.cta-phone{font-family:var(--sr);font-size:36px;font-weight:700;color:var(--g);text-decoration:none;letter-spacing:-.5px}
+.cta-sub{font-size:11px;color:rgba(245,240,232,.3);letter-spacing:1px}
+
+/* ABOUT */
+.about-sec{background:var(--iv2)}
+.certs-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px}
+.cert-card{background:#fff;padding:44px 36px;border-top:2px solid transparent;transition:all .3s;cursor:default}
+.cert-card:hover{background:rgba(212,175,55,.05);border-color:var(--g)}
+.cert-ico{font-size:28px;display:block;margin-bottom:20px}
+.cert-lbl{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--g2);margin-bottom:8px}
+.cert-val{font-family:var(--sr);font-size:19px;font-weight:700;color:var(--ink);margin-bottom:12px}
+.cert-sub{font-size:13px;font-weight:300;color:var(--st);line-height:1.8}
+
+/* CONTACT */
+.contact-sec{background:var(--f2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:100px}
+.ci-list{display:flex;flex-direction:column}
+.ci{display:flex;gap:18px;align-items:flex-start;padding:22px 0;border-bottom:1px solid rgba(212,175,55,.1);transition:padding-left .2s}
+.ci:first-child{border-top:1px solid rgba(212,175,55,.1)}
+.ci:hover{padding-left:6px}
+.ci-icon{width:42px;height:42px;border:1px solid rgba(212,175,55,.22);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;transition:border-color .2s}
+.ci:hover .ci-icon{border-color:var(--g)}
+.ci-lbl{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--g);margin-bottom:5px}
+.ci-val{font-size:15px;color:rgba(245,240,232,.62);line-height:1.55}
+.ci-val a{color:#ECD98A;text-decoration:none}
+.cform{background:var(--f3);padding:52px 48px;border-top:2px solid var(--g)}
+.cform-title{font-family:var(--sr);font-size:27px;font-weight:400;color:var(--iv);margin-bottom:6px}
+.cform-title em{font-style:italic;color:#ECD98A}
+.cform-sub{font-size:13px;font-weight:300;color:rgba(245,240,232,.28);line-height:1.7;margin-bottom:30px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.f-grp{margin-bottom:14px}
+.f-grp label{display:block;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,232,.28);margin-bottom:7px}
+.f-grp input,.f-grp select,.f-grp textarea{width:100%;background:rgba(245,240,232,.04);border:1px solid rgba(212,175,55,.18);padding:13px 15px;font-size:14px;color:var(--iv);font-family:var(--sn);font-weight:300;outline:none;transition:border-color .2s}
+.f-grp select{background:#162016;-webkit-appearance:none}
+.f-grp input:focus,.f-grp select:focus,.f-grp textarea:focus{border-color:var(--g)}
+.f-grp input::placeholder,.f-grp textarea::placeholder{color:rgba(245,240,232,.2)}
+.f-grp textarea{resize:vertical;min-height:100px}
+.f-btn{width:100%;background:var(--g);color:#111;border:none;padding:15px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;font-family:var(--sn);font-weight:600;cursor:pointer;transition:all .2s;margin-top:6px}
+.f-btn:hover{background:var(--g2);color:#fff}
+.f-note{text-align:center;font-size:11px;color:rgba(245,240,232,.16);margin-top:14px}
+.f-success{display:none;text-align:center;padding:52px 0}
+.f-success-ico{font-size:44px;margin-bottom:16px}
+.f-success-h{font-family:var(--sr);font-size:28px;color:var(--iv);margin-bottom:10px}
+.f-success-p{font-size:14px;color:rgba(245,240,232,.38);line-height:1.85}
+.f-success-p a{color:#ECD98A;text-decoration:none}
+
+/* FOOTER */
+footer{background:var(--ink);border-top:1px solid rgba(212,175,55,.1);padding:44px 60px;display:flex;align-items:center;justify-content:space-between}
+.f-logo{font-family:var(--sr);font-size:17px;font-weight:700;color:var(--iv)}
+.f-logo span{color:var(--g)}
+.f-links{display:flex;gap:30px}
+.f-links a{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,232,.22);text-decoration:none;transition:color .2s}
+.f-links a:hover{color:var(--g)}
+.f-copy{font-size:11px;color:rgba(245,240,232,.16)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* MOBILE */
+@media(max-width:960px){
+  header{padding:0 20px}
+  nav a:not(.nav-cta){display:none}
+  section{padding:72px 24px}
+  .hero-content{padding:120px 24px 80px}
+  .sig-strip{grid-template-columns:1fr 1fr;border-bottom:none}
+  .sig-item{border-bottom:1px solid rgba(212,175,55,0.08);padding:28px 20px}
+  .story-grid{grid-template-columns:1fr}
+  .story-visual{display:none}
+  .menu-header{grid-template-columns:1fr;gap:20px}
+  .menu-panel.on{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:1fr}
+  .certs-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr;gap:52px}
+  .cta-inner{flex-direction:column;text-align:center}
+  .cta-right{align-items:center}
+  footer{flex-direction:column;gap:16px;text-align:center;padding:28px 24px}
+  .cform{padding:28px 20px}
+  .f-row{grid-template-columns:1fr}
+  .price-inner{max-width:100%}
+  .hero-stats{gap:24px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-box">M</div>
+    <span class="nav-logo-txt">MGL <span>&amp;</span> Services</span>
+  </a>
+  <nav>
+    <a href="#menu">Menu</a>
+    <a href="#services">Services</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#about">About</a>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-inner">
+      <div class="hero-tag">
+        <div class="hero-tag-line"></div>
+        <span class="hero-tag-txt">Corporate Catering · Bengaluru</span>
+      </div>
+      <h1 class="hero-h1">Where Every<em>Meal Matters.</em></h1>
+      <div class="hero-rule"></div>
+      <p class="hero-p">Authentic South Indian cuisine, freshly prepared each morning and delivered to your office with the precision and care your team deserves.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-gold">Request a Quote</a>
+        <a href="#menu" class="btn-outline">Explore Menu</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hs-n">500+</div><div class="hs-l">Meals Daily</div></div>
+        <div><div class="hs-n">₹60</div><div class="hs-l">From / Person</div></div>
+        <div><div class="hs-n">7</div><div class="hs-l">Days a Week</div></div>
+        <div><div class="hs-n">FSSAI</div><div class="hs-l">Certified</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">Fresh Cooked Daily</span><span class="marquee-item">FSSAI Certified</span><span class="marquee-item">On-Time Every Day</span><span class="marquee-item">Serving Bengaluru</span><span class="marquee-item">From ₹60 Per Person</span><span class="marquee-item">GST Registered</span><span class="marquee-item">7 Days A Week</span><span class="marquee-item">Minimum 10 Persons</span>
+    <span class="marquee-item">Fresh Cooked Daily</span><span class="marquee-item">FSSAI Certified</span><span class="marquee-item">On-Time Every Day</span><span class="marquee-item">Serving Bengaluru</span><span class="marquee-item">From ₹60 Per Person</span><span class="marquee-item">GST Registered</span><span class="marquee-item">7 Days A Week</span><span class="marquee-item">Minimum 10 Persons</span>
+  </div>
+</div>
+
+<!-- SIGNATURE DISHES -->
+<div class="sig-strip">
+  <div class="sig-item">
+    <div class="sig-num">01</div>
+    <div class="sig-name">Idli &amp; Vada</div>
+    <div class="sig-desc">Steamed rice cakes &amp; crispy fritters, served with sambar and coconut chutney</div>
+    <div class="sig-bar"></div>
+  </div>
+  <div class="sig-item">
+    <div class="sig-num">02</div>
+    <div class="sig-name">Masala Dosa</div>
+    <div class="sig-desc">Paper-thin crispy crepe with spiced potato filling, chutneys &amp; sambar</div>
+    <div class="sig-bar"></div>
+  </div>
+  <div class="sig-item">
+    <div class="sig-num">03</div>
+    <div class="sig-name">Ven Pongal</div>
+    <div class="sig-desc">Creamy rice &amp; moong dal tempered with ghee, black pepper and cashews</div>
+    <div class="sig-bar"></div>
+  </div>
+  <div class="sig-item">
+    <div class="sig-num">04</div>
+    <div class="sig-name">Rice Thali</div>
+    <div class="sig-desc">Steamed basmati with sambar, rasam, seasonal palya, papad &amp; pickle</div>
+    <div class="sig-bar"></div>
+  </div>
+  <div class="sig-item">
+    <div class="sig-num">05</div>
+    <div class="sig-name">Gulab Jamun</div>
+    <div class="sig-desc">Soft milk dumplings soaked in warm rose &amp; saffron sugar syrup</div>
+    <div class="sig-bar"></div>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="story-sec rv">
+  <div class="s-inner">
+    <div class="story-grid">
+      <div>
+        <div class="s-label s-label-light"><div class="s-label-line"></div><span class="s-label-txt">Our Story</span></div>
+        <h2 class="s-h2 light-h" style="margin-bottom:28px">Food that feels<br><em>like home.</em></h2>
+        <p class="story-p">At MGL Catering &amp; Services, we believe the best corporate catering doesn't feel corporate at all. Every meal is prepared fresh each morning using locally sourced ingredients — the same care you'd find in a home kitchen, delivered at scale.</p>
+        <p class="story-p">From 10 people to 500+, our reputation is built on one simple promise: your team always gets a meal worth looking forward to.</p>
+        <div class="story-stats">
+          <div><div class="story-stat-n">500+</div><div class="story-stat-l">Meals Daily</div></div>
+          <div><div class="story-stat-n">₹60</div><div class="story-stat-l">Starting Price</div></div>
+          <div><div class="story-stat-n">FSSAI</div><div class="story-stat-l">Certified</div></div>
+        </div>
+      </div>
+      <div class="story-img-wrap rv d2">
+        <div class="story-visual">
+          <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="pg" cx="50%" cy="35%" r="55%"><stop offset="0%" stop-color="#EEE6D4"/><stop offset="100%" stop-color="#C8C0A8"/></radialGradient>
+              <radialGradient id="rg" cx="50%" cy="35%" r="55%"><stop offset="0%" stop-color="#F8F0E0"/><stop offset="100%" stop-color="#E4D4B4"/></radialGradient>
+            </defs>
+            <circle cx="180" cy="180" r="165" fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="1" stroke-dasharray="5 8"/>
+            <circle cx="180" cy="180" r="145" fill="none" stroke="rgba(212,175,55,0.07)" stroke-width="1"/>
+            <ellipse cx="180" cy="222" rx="130" ry="18" fill="rgba(0,0,0,0.22)"/>
+            <ellipse cx="180" cy="215" rx="128" ry="16" fill="#8A8272"/>
+            <ellipse cx="180" cy="211" rx="124" ry="14" fill="#B0A890"/>
+            <ellipse cx="180" cy="206" rx="120" ry="13" fill="url(#pg)"/>
+            <ellipse cx="180" cy="201" rx="116" ry="11" fill="#F2EAD8"/>
+            <path d="M64,198 Q180,186 296,198" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+            <path d="M64,198 Q122,176 180,172 Q238,176 296,198 Q238,210 180,214 Q122,210 64,198Z" fill="#1E5010" opacity="0.38"/>
+            <ellipse cx="180" cy="192" rx="44" ry="17" fill="#E2D2B0"/>
+            <ellipse cx="180" cy="187" rx="42" ry="14" fill="url(#rg)"/>
+            <rect x="164" y="179" width="5" height="2.5" rx="1.2" fill="#FFFAE8" transform="rotate(-8,166,180)" opacity="0.6"/>
+            <rect x="178" y="175" width="5" height="2.5" rx="1.2" fill="#FFFAE8" transform="rotate(4,180,176)" opacity="0.6"/>
+            <rect x="192" y="178" width="5" height="2.5" rx="1.2" fill="#FFFAE8" transform="rotate(-5,194,179)" opacity="0.6"/>
+            <path d="M174,174 Q180,168 186,174" fill="none" stroke="#F0C028" stroke-width="2" opacity="0.45" stroke-linecap="round"/>
+            <path d="M168,162 Q165,153 168,144" fill="none" stroke="rgba(245,240,232,0.14)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M180,158 Q177,149 180,140" fill="none" stroke="rgba(245,240,232,0.1)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M192,161 Q195,152 192,143" fill="none" stroke="rgba(245,240,232,0.09)" stroke-width="1.5" stroke-linecap="round"/>
+            <ellipse cx="86" cy="207" rx="26" ry="7.5" fill="rgba(0,0,0,0.18)"/>
+            <ellipse cx="86" cy="203" rx="25" ry="6.5" fill="#989070"/>
+            <ellipse cx="86" cy="199" rx="23" ry="8.5" fill="#C85C18"/>
+            <ellipse cx="86" cy="196" rx="21" ry="7" fill="#D06828"/>
+            <ellipse cx="274" cy="207" rx="26" ry="7.5" fill="rgba(0,0,0,0.18)"/>
+            <ellipse cx="274" cy="203" rx="25" ry="6.5" fill="#989070"/>
+            <ellipse cx="274" cy="199" rx="23" ry="8.5" fill="#B84414"/>
+            <ellipse cx="274" cy="196" rx="21" ry="7" fill="#C85020"/>
+            <ellipse cx="128" cy="212" rx="16" ry="5" fill="#989070"/>
+            <ellipse cx="128" cy="209" rx="14" ry="6.5" fill="#469028"/>
+            <ellipse cx="232" cy="212" rx="16" ry="5" fill="#989070"/>
+            <ellipse cx="232" cy="209" rx="14" ry="6.5" fill="#CC8818"/>
+            <path d="M154,212 Q180,205 206,212 Q192,218 180,220 Q168,218 154,212Z" fill="#D4B868" opacity="0.65"/>
+            <g fill="rgba(212,175,55,0.28)">
+              <circle cx="68" cy="250" r="2"/><circle cx="90" cy="250" r="2"/><circle cx="112" cy="250" r="2"/>
+              <circle cx="134" cy="250" r="2"/><circle cx="156" cy="250" r="2"/><circle cx="178" cy="250" r="2"/>
+              <circle cx="200" cy="250" r="2"/><circle cx="222" cy="250" r="2"/><circle cx="244" cy="250" r="2"/>
+              <circle cx="266" cy="250" r="2"/><circle cx="288" cy="250" r="2"/>
+              <circle cx="79" cy="241" r="1.4"/><circle cx="101" cy="241" r="1.4"/><circle cx="123" cy="241" r="1.4"/>
+              <circle cx="145" cy="241" r="1.4"/><circle cx="167" cy="241" r="1.4"/><circle cx="189" cy="241" r="1.4"/>
+              <circle cx="211" cy="241" r="1.4"/><circle cx="233" cy="241" r="1.4"/><circle cx="255" cy="241" r="1.4"/>
+              <circle cx="277" cy="241" r="1.4"/>
+            </g>
+            <text x="180" y="292" text-anchor="middle" font-family="'Libre Baskerville',serif" font-size="12" font-style="italic" fill="rgba(212,175,55,0.45)">Fresh · Authentic · Daily</text>
+            <path d="M16,28 L36,28 L36,48" fill="none" stroke="rgba(212,175,55,0.28)" stroke-width="1.5"/>
+            <path d="M344,28 L324,28 L324,48" fill="none" stroke="rgba(212,175,55,0.28)" stroke-width="1.5"/>
+            <path d="M16,332 L36,332 L36,312" fill="none" stroke="rgba(212,175,55,0.28)" stroke-width="1.5"/>
+            <path d="M344,332 L324,332 L324,312" fill="none" stroke="rgba(212,175,55,0.28)" stroke-width="1.5"/>
+          </svg>
+          <div class="fssai-badge">
+            <div class="fssai-badge-n">FSSAI</div>
+            <div class="fssai-badge-l">Certified Kitchen</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-sec rv" id="menu">
+  <div class="s-inner">
+    <div class="menu-header">
+      <div>
+        <div class="s-label s-label-dark"><div class="s-label-line"></div><span class="s-label-txt">What We Serve</span></div>
+        <h2 class="s-h2 dark-h">Authentic flavours,<br><em>crafted daily.</em></h2>
+      </div>
+      <p class="menu-sub">Every dish prepared fresh each morning with quality local ingredients. Our rotating menu keeps things interesting while delivering the consistency your team relies on.</p>
+    </div>
+    <div class="menu-tabs">
+      <button class="m-tab on" onclick="switchMenu('b',this)">Breakfast</button>
+      <button class="m-tab" onclick="switchMenu('l',this)">Lunch</button>
+      <button class="m-tab" onclick="switchMenu('s',this)">Sweets &amp; Snacks</button>
+      <div class="m-tab-filler"></div>
+    </div>
+    <div class="menu-panel on" id="mp-b">
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Idli</div><div class="m-desc">Sambar &amp; chutney</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Medu Vada</div><div class="m-desc">Crispy fritters</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Poori Sagu</div><div class="m-desc">Puffy bread &amp; potato</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Wheat Dosa</div><div class="m-desc">Thin &amp; crispy</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Rava Upma</div><div class="m-desc">Semolina &amp; veg</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Kesari Bath</div><div class="m-desc">Sweet semolina</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Khara Bath</div><div class="m-desc">Spiced rava</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Ven Pongal</div><div class="m-desc">Rice &amp; moong dal</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Chow Chow Bath</div><div class="m-desc">Upma &amp; Kesari</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Raagi Malt</div><div class="m-desc">Millet drink</div></div>
+    </div>
+    <div class="menu-panel" id="mp-l">
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Steamed Rice</div><div class="m-desc">Fresh basmati</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Sambar Rice</div><div class="m-desc">Toor dal sambar</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Rasam Rice</div><div class="m-desc">Pepper broth</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Vangi Bath</div><div class="m-desc">Brinjal rice</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Lemon Rice</div><div class="m-desc">Tangy with peanuts</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Curd Rice</div><div class="m-desc">Cool &amp; refreshing</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Chapathi</div><div class="m-desc">Soft wheat rotis</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Dal Tadka</div><div class="m-desc">Yellow lentil</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Seasonal Sabji</div><div class="m-desc">Local vegetables</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Papad &amp; Pickle</div><div class="m-desc">Traditional sides</div></div>
+    </div>
+    <div class="menu-panel" id="mp-s">
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Gulab Jamun</div><div class="m-desc">Rose syrup</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Carrot Halwa</div><div class="m-desc">Slow-cooked</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Tomato Gojju</div><div class="m-desc">Sweet-tangy</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Bajji / Bonda</div><div class="m-desc">Fried snacks</div></div>
+      <div class="m-item"><div class="m-dot"></div><div class="m-name">Sheera</div><div class="m-desc">Semolina pudding</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-sec rv">
+  <div class="s-inner">
+    <div class="s-label s-label-dark"><div class="s-label-line"></div><span class="s-label-txt">Why Choose Us</span></div>
+    <h2 class="s-h2 dark-h" style="margin-bottom:64px">The standard every<br><em>office deserves.</em></h2>
+    <div class="why-grid">
+      <div class="why-card rv"><div class="wc-num">01</div><div class="wc-title">Fresh Every Morning</div><div class="wc-desc">No pre-cooked batches. No reheating. Every meal is cooked the same morning it arrives at your office.</div></div>
+      <div class="why-card rv d1"><div class="wc-num">02</div><div class="wc-title">On Time, Every Time</div><div class="wc-desc">Punctuality is a promise we never break. Your lunch is ready exactly when your team is.</div></div>
+      <div class="why-card rv d2"><div class="wc-num">03</div><div class="wc-title">FSSAI Certified</div><div class="wc-desc">Fully compliant kitchen. Reg. 21226008001896 — valid until April 2031.</div></div>
+      <div class="why-card rv"><div class="wc-num">04</div><div class="wc-title">From ₹60 / Person</div><div class="wc-desc">Complete South Indian thalis at prices that make sense for businesses of any size.</div></div>
+      <div class="why-card rv d1"><div class="wc-num">05</div><div class="wc-title">Fully Customisable</div><div class="wc-desc">Dietary needs, menu preferences, portions and timings — all adjusted to your team.</div></div>
+      <div class="why-card rv d2"><div class="wc-num">06</div><div class="wc-title">Local &amp; Trusted</div><div class="wc-desc">Born in Nelamangala, built for Bengaluru. We know this city and its offices.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="svc-sec rv" id="services">
+  <div class="s-inner">
+    <div class="s-label s-label-light"><div class="s-label-line"></div><span class="s-label-txt">Our Services</span></div>
+    <h2 class="s-h2 light-h" style="margin-bottom:64px">Built for offices<br><em>of every scale.</em></h2>
+    <div class="svc-grid">
+      <div class="svc-card rv"><div class="svc-num">01</div><div class="svc-title">Daily Office Meals</div><div class="svc-desc">Weekly or monthly contracts for lunch and dinner. The same quality, the same care — so you never have to think about it.</div><span class="svc-tag">Most Popular</span></div>
+      <div class="svc-card rv d1"><div class="svc-num">02</div><div class="svc-title">Corporate Events</div><div class="svc-desc">Town halls, client meetings, company gatherings. Fresh catering with full setup and professional service included.</div><span class="svc-tag">Custom Quote</span></div>
+      <div class="svc-card rv d2"><div class="svc-num">03</div><div class="svc-title">Bulk Tiffin Service</div><div class="svc-desc">Hygienic sealed containers for large teams. Flexible volumes and schedules. Starting from ₹60/person on contract.</div><span class="svc-tag">Best Value</span></div>
+      <div class="svc-card rv d3"><div class="svc-num">04</div><div class="svc-title">Office Celebrations</div><div class="svc-desc">Birthdays, farewells, milestones. Custom menus, elevated presentation, warmth that makes every occasion special.</div><span class="svc-tag">Custom Quote</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="price-sec rv" id="pricing">
+  <div class="price-inner">
+    <div class="s-label s-label-dark"><div class="s-label-line"></div><span class="s-label-txt">Pricing</span></div>
+    <h2 class="s-h2 dark-h" style="margin-bottom:14px">Honest, <em>transparent</em> pricing.</h2>
+    <div class="price-note">
+      <span style="font-size:16px;flex-shrink:0">ℹ️</span>
+      <div><strong>Daily contracts only.</strong> Rates below apply to regular daily or weekly contracts (min. 10 persons). For events or occasional orders, <a href="#contact">contact us for a custom quote.</a></div>
+    </div>
+    <div class="price-tabs">
+      <button class="p-tab on" onclick="switchPrice('c',this)">Daily Contract Rates</button>
+      <button class="p-tab" onclick="switchPrice('e',this)">Events &amp; Occasions</button>
+      <div class="p-tab-filler"></div>
+    </div>
+    <div class="p-panel on" id="pp-c">
+      <table class="p-table">
+        <thead><tr><th>Team Size</th><th>Price / Person / Meal</th><th>Savings</th><th>Best For</th></tr></thead>
+        <tbody>
+          <tr><td class="pt">10 – 50 persons</td><td>₹60 / person</td><td style="color:var(--st)">—</td><td style="color:var(--st)">Startups &amp; small offices</td></tr>
+          <tr><td class="pt">51 – 150 persons</td><td>₹55 / person</td><td class="ph">Save ₹5 / head</td><td style="color:var(--st)">Mid-size companies</td></tr>
+          <tr><td class="pt">151 – 500 persons</td><td>₹50 / person</td><td class="ph">Save ₹10 / head</td><td style="color:var(--st)">Large corporates</td></tr>
+          <tr><td class="pt" style="color:var(--g2)">500+ persons</td><td class="ph">Custom quote</td><td class="ph">Best rates</td><td style="color:var(--st)">Campuses &amp; institutions</td></tr>
+        </tbody>
+      </table>
+      <div class="p-foot">Per meal, per person. Includes cooking, hygienic packaging and delivery to your Bengaluru office.</div>
+    </div>
+    <div class="p-panel" id="pp-e">
+      <table class="p-table">
+        <thead><tr><th>Service</th><th>Pricing</th><th>Includes</th><th>Notice Required</th></tr></thead>
+        <tbody>
+          <tr><td class="pt">Corporate Event</td><td class="ph">Custom quote</td><td style="color:var(--st)">Setup &amp; service</td><td style="color:var(--st)">48 hours</td></tr>
+          <tr><td class="pt">Office Celebration</td><td class="ph">Custom quote</td><td style="color:var(--st)">Custom menu</td><td style="color:var(--st)">24 hours</td></tr>
+          <tr><td class="pt">Bulk One-Time</td><td class="ph">Custom quote</td><td style="color:var(--st)">Packed &amp; delivered</td><td style="color:var(--st)">24 hours</td></tr>
+          <tr><td class="pt">Client Lunch</td><td class="ph">Custom quote</td><td style="color:var(--st)">Premium service</td><td style="color:var(--st)">48 hours</td></tr>
+        </tbody>
+      </table>
+      <div class="p-foot"><strong>Event pricing</strong> depends on menu, quantity and setup. We'll send a detailed quote within 2 hours.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-sec rv">
+  <div class="cta-grid-bg"></div>
+  <div class="cta-inner">
+    <div>
+      <div class="s-label s-label-light"><div class="s-label-line"></div><span class="s-label-txt">Ready to Begin</span></div>
+      <h2 class="s-h2 light-h">Give your team meals<br><em>worth looking forward to.</em></h2>
+      <p style="font-size:15px;font-weight:300;color:rgba(245,240,232,.4);margin-top:16px;line-height:1.8">Call, WhatsApp, or fill our form. We respond within 2 hours.</p>
+    </div>
+    <div class="cta-right">
+      <a href="tel:+918105792983" class="cta-phone">+91 81057 92983</a>
+      <div class="cta-sub">All 7 days · 8 AM – 8 PM</div>
+      <a href="#contact" class="btn-gold">Send an Enquiry</a>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-sec rv" id="about">
+  <div class="s-inner">
+    <div class="s-label s-label-dark"><div class="s-label-line"></div><span class="s-label-txt">Credentials</span></div>
+    <h2 class="s-h2 dark-h" style="margin-bottom:56px">Certified, compliant<br><em>and trusted.</em></h2>
+    <div class="certs-grid">
+      <div class="cert-card rv"><span class="cert-ico">🏅</span><div class="cert-lbl">FSSAI Registration</div><div class="cert-val">21226008001896</div><div class="cert-sub">Valid to 12 April 2031. Our kitchen is fully certified, maintained and regularly inspected.</div></div>
+      <div class="cert-card rv d1"><span class="cert-ico">📋</span><div class="cert-lbl">GST Registration</div><div class="cert-val">29DYQPP0129E1Z6</div><div class="cert-sub">MGL Catering Services — registered and compliant, providing proper GST invoicing for all clients.</div></div>
+      <div class="cert-card rv d2"><span class="cert-ico">📍</span><div class="cert-lbl">Our Kitchen</div><div class="cert-val">Nelamangala, Bengaluru</div><div class="cert-sub">Huskur, Nelamangala, Bengaluru – 562123. Serving corporate offices across the entire city.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-sec rv" id="contact">
+  <div class="s-inner">
+    <div class="contact-grid">
+      <div>
+        <div class="s-label s-label-light"><div class="s-label-line"></div><span class="s-label-txt">Get In Touch</span></div>
+        <h2 class="s-h2 light-h" style="margin-bottom:14px">Let's talk about<br><em>your team.</em></h2>
+        <p style="font-size:14px;font-weight:300;color:rgba(245,240,232,.38);line-height:1.85;margin-bottom:52px">We'll get back within 2 hours with a tailored quote for your office.</p>
+        <div class="ci-list">
+          <div class="ci"><div class="ci-icon">📞</div><div><div class="ci-lbl">Call / WhatsApp</div><div class="ci-val"><a href="tel:+918105792983">+91 81057 92983</a></div></div></div>
+          <div class="ci"><div class="ci-icon">✉️</div><div><div class="ci-lbl">Email</div><div class="ci-val"><a href="mailto:mglenterprises5@gmail.com">mglenterprises5@gmail.com</a></div></div></div>
+          <div class="ci"><div class="ci-icon">🕐</div><div><div class="ci-lbl">Hours</div><div class="ci-val">Monday – Sunday · 8 AM – 8 PM</div></div></div>
+          <div class="ci"><div class="ci-icon">📍</div><div><div class="ci-lbl">Address</div><div class="ci-val">Huskur, Nelamangala, Bengaluru – 562123</div></div></div>
+        </div>
+      </div>
+      <div class="cform" id="form-wrap">
+        <div id="form-body">
+          <div class="cform-title">Request a <em>Quote</em></div>
+          <p class="cform-sub">Tell us about your team and requirements.</p>
+          <div class="f-row">
+            <div class="f-grp"><label>Name *</label><input type="text" id="fn" placeholder="Your name"></div>
+            <div class="f-grp"><label>Company *</label><input type="text" id="fc" placeholder="Company name"></div>
+          </div>
+          <div class="f-row">
+            <div class="f-grp"><label>Phone *</label><input type="tel" id="fp" placeholder="+91 98765 43210"></div>
+            <div class="f-grp"><label>Email</label><input type="email" id="fe" placeholder="you@company.com"></div>
+          </div>
+          <div class="f-row">
+            <div class="f-grp"><label>Team Size *</label>
+              <select id="fs"><option value="">Select size</option><option>10 – 50 persons</option><option>51 – 150 persons</option><option>151 – 500 persons</option><option>500+ persons</option></select>
+            </div>
+            <div class="f-grp"><label>Service</label>
+              <select id="fsv"><option value="">Select service</option><option>Daily Office Meals</option><option>Corporate Event</option><option>Tiffin Service</option><option>Office Celebration</option><option>Other</option></select>
+            </div>
+          </div>
+          <div class="f-grp"><label>Message</label><textarea id="fm" placeholder="Location, timings, dietary requirements, event date…"></textarea></div>
+          <button class="f-btn" onclick="submitForm()">Send Enquiry</button>
+          <p class="f-note">Min. 10 persons · All of Bengaluru · Response within 2 hours</p>
+        </div>
+        <div class="f-success" id="f-ok">
+          <div class="f-success-ico">✅</div>
+          <div class="f-success-h">Thank you.</div>
+          <p class="f-success-p">We'll call you back within 2 hours.<br><br>Urgent? <a href="tel:+918105792983">+91 81057 92983</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">MGL <span>&amp;</span> Services</div>
+  <div class="f-links">
+    <a href="#menu">Menu</a>
+    <a href="#services">Services</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="f-copy">© 2025 MGL Enterprises · GSTIN 29DYQPP0129E1Z6</div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  document.getElementById('hdr').classList.toggle('scrolled',window.scrollY>50);
+});
+function switchMenu(id,el){
+  document.querySelectorAll('.m-tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('mp-'+id).classList.add('on');
+}
+function switchPrice(id,el){
+  document.querySelectorAll('.p-tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.p-panel').forEach(p=>p.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('pp-'+id).classList.add('on');
+}
+function submitForm(){
+  if(!document.getElementById('fn').value.trim()||!document.getElementById('fp').value.trim()||!document.getElementById('fs').value){
+    alert('Please fill in your name, phone number and team size.');return;
+  }
+  document.getElementById('form-body').style.display='none';
+  document.getElementById('f-ok').style.display='block';
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+},{threshold:0.07});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
